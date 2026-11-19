@@ -5,24 +5,29 @@
 
 Агент сервера — невелика програма для сервера з HestiaCP. Він лише читає: показує в LazyAss домени сервера з датами їх
 появи, навантаження й пам'ять сервера і зсередини перевіряє, чи відкриваються сайти. Сайтів не змінює, служб сайтів не
-перезапускає. Нову версію сервер ставить лише з цифровим підписом і за 2 хвилини сам повертає попередню, якщо нова не
+перезапускає. Виняток — лише **режим заводу** (з агента 1.1.0): його вмикаєте ви самі командою `sudo la-agent factory on`
+лише на звільненому сервері, де немає жодного вашого сайту, і підтверджуєте в LazyAss. Лише там агент створює нові сайти
+заводу. Нову версію сервер ставить лише з цифровим підписом і за 2 хвилини сам повертає попередню, якщо нова не
 запрацювала.
 
-## Агент сервера 1.0.0
+## Агент сервера 1.1.0
+
+Агент 1.1.0 працює з LazyAss 1.10.0 і новішими. Сервер, де вже стоїть агент 1.0.0, оновлюйте з LazyAss: «Сервери» → сервер →
+«Оновити агента до …» (код). Команди нижче — для нового сервера.
 
 Команда встановлення агента (у LazyAss її показано вже з кодом; тут замість коду — підказка):
 
 ```
- curl -fsSLo la-agent.sh https://github.com/seovladislav-design/lazyass-dist/releases/download/agent-1.0.0/la-agent.sh && echo 'bccdc7aa5564c38cb41866e994a055b343da79e1da64156a0d2dbed6e0c54ebc  la-agent.sh' | sha256sum -c - && sudo bash la-agent.sh <<< '<код підключення з LazyAss>'
+ curl -fsSLo la-agent.sh https://github.com/seovladislav-design/lazyass-dist/releases/download/agent-1.1.0/la-agent.sh && echo '174783391b8e53f3184eca90bd66a510d605b0baec302fc3c1f3889b0a175223  la-agent.sh' | sha256sum -c - && sudo bash la-agent.sh <<< '<код підключення з LazyAss>'
 ```
 
 Перевірка без змін (нічого не встановлює):
 
 ```
- curl -fsSLo la-agent.sh https://github.com/seovladislav-design/lazyass-dist/releases/download/agent-1.0.0/la-agent.sh && echo 'bccdc7aa5564c38cb41866e994a055b343da79e1da64156a0d2dbed6e0c54ebc  la-agent.sh' | sha256sum -c - && sudo bash la-agent.sh --check
+ curl -fsSLo la-agent.sh https://github.com/seovladislav-design/lazyass-dist/releases/download/agent-1.1.0/la-agent.sh && echo '174783391b8e53f3184eca90bd66a510d605b0baec302fc3c1f3889b0a175223  la-agent.sh' | sha256sum -c - && sudo bash la-agent.sh --check
 ```
 
-sha256 інсталятора la-agent.sh: `bccdc7aa 5564c38c b41866e9 94a055b3 43da79e1 da64156a 0d2dbed6 e0c54ebc`
+sha256 інсталятора la-agent.sh: `17478339 1b8e53f3 184eca90 bd66a510 d605b0ba ec302fc3 c1f3889b 0a175223`
 
 Підпис релізів: `E97E 7786 3A4C 5942 80E0 522C 1086 6CF9`
 
